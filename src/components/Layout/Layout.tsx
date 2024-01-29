@@ -6,9 +6,8 @@ type Props = {
 
 function Layout({ children }: Props) {
   return (
-    <div className="flex flex-col justify-between w-full container mx-auto py-5">
+    <div className="bg-[url('/images/bg.png')] min-h-[100vh] flex flex-col w-full mx-auto py-5 bg-cover">
       <Header />
-
       {children}
     </div>
   );
