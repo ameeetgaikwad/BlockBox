@@ -9,7 +9,12 @@ export default async function handler(
     const { address } = req.query;
     const creator = await Creator.findOne({ creatorAddress: address });
     if (creator) {
-      res.status(200).json({ message: "Creator exist", data: true });
+      res
+        .status(200)
+        .json({
+          message: "Creator exist",
+          data: { exist: true, data: creator },
+        });
       return;
     } else {
       res.status(200).json({ message: "Creator doesn't exist", data: false });
