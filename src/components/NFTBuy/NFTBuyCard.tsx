@@ -75,7 +75,7 @@ function NFTBuyCard({ subscription }: Props) {
               <img src={image} alt="nft" width={300} height={200} />
             ) : (
               <img
-                src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+                src="https://www.thestreet.com/.image/t_share/MTgyMDU5NDcwMTc4NzU1NzE1/boredape1.jpg"
                 alt="nft"
                 width={300}
                 height={200}
@@ -83,10 +83,10 @@ function NFTBuyCard({ subscription }: Props) {
             )}
           </Link>
         </figure>
-        <div className="card-body">
+        <div className="card-body flex flex-col justify-between">
           <Link href={`/creator/${subscription._id}`}>
             <div>
-              <h2 className="card-title">{title}</h2>
+              <h2 className="card-title text-gray-300 mb-1">{title}</h2>
               <div className="flex flex-row justify-between">
                 <span className="badge badge-outline badge-accent">
                   {symbol}
@@ -99,7 +99,7 @@ function NFTBuyCard({ subscription }: Props) {
           </Link>
           <div className="card-actions justify-end">
             <button onClick={buySubscription} className="btn btn-primary">
-              Buy Subscription
+              Buy Membership
             </button>
           </div>
         </div>
@@ -112,7 +112,7 @@ function NFTBuyCard({ subscription }: Props) {
               className="alert alert-warning absolute top-5 w-[40%] "
             >
               <span className="loading loading-ring loading-lg"></span>
-              <span>Buying your subscription!</span>
+              <span>Buying your Membership!</span>
             </div>
           </div>
         )}
