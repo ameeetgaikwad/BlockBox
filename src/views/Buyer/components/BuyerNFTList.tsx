@@ -9,6 +9,7 @@ type Props = {
       image: string;
       price: string;
       benifits: string[];
+      _id: string;
     }
   ];
 };

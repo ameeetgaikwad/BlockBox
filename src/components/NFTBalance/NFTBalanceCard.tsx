@@ -1,4 +1,5 @@
 import { formatContent } from "@/utils/formatContent";
+import Link from "next/link";
 type Props = {
   subscription: {
     NFTAddress: string;
@@ -7,6 +8,7 @@ type Props = {
     image: string;
     price: string;
     benifits: string[];
+    _id: string;
   };
 };
 
@@ -38,7 +40,12 @@ function NFTBalanceCard({ subscription }: Props) {
 
           <p>{formatContent(benifits[0])}</p>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">More details</button>
+            <Link
+              href={`/creator/${subscription._id}`}
+              className="btn btn-primary"
+            >
+              More details
+            </Link>
           </div>
         </div>
       </div>

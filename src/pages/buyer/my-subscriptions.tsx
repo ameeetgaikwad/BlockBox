@@ -16,7 +16,6 @@ function MySubscription() {
           address: account,
         },
       });
-      console.log("in fetchCreatorSubscription", res);
       setSubscriptions(res.data.subscriptions);
     } catch (e) {
       console.log("Error at MyCreator.tsx", e);

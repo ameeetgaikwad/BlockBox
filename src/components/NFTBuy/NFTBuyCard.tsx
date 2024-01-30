@@ -2,6 +2,7 @@ import { useSubscriptionContractWrite } from "@/hooks/useSubscription";
 import { formatContent } from "@/utils/formatContent";
 import axios from "axios";
 import { ethers } from "ethers";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 type Props = {
@@ -69,27 +70,33 @@ function NFTBuyCard({ subscription }: Props) {
     <>
       <div className="card w-64 bg-base-100 shadow-xl">
         <figure>
-          {image ? (
-            <img src={image} alt="nft" width={300} height={200} />
-          ) : (
-            <img
-              src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-              alt="nft"
-              width={300}
-              height={200}
-            />
-          )}
+          <Link href={`/creator/${subscription._id}`}>
+            {image ? (
+              <img src={image} alt="nft" width={300} height={200} />
+            ) : (
+              <img
+                src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+                alt="nft"
+                width={300}
+                height={200}
+              />
+            )}
+          </Link>
         </figure>
         <div className="card-body">
-          <div>
-            <h2 className="card-title">{title}</h2>
-            <div className="flex flex-row justify-between">
-              <span className="badge badge-outline badge-accent">{symbol}</span>
-              <span className="badge badge-neutral">{price}ether</span>
+          <Link href={`/creator/${subscription._id}`}>
+            <div>
+              <h2 className="card-title">{title}</h2>
+              <div className="flex flex-row justify-between">
+                <span className="badge badge-outline badge-accent">
+                  {symbol}
+                </span>
+                <span className="badge badge-neutral">{price}ether</span>
+              </div>
             </div>
-          </div>
 
-          <p>{formatContent(benifits[0])}</p>
+            <p>{formatContent(benifits[0])}</p>
+          </Link>
           <div className="card-actions justify-end">
             <button onClick={buySubscription} className="btn btn-primary">
               Buy Subscription
@@ -105,7 +112,7 @@ function NFTBuyCard({ subscription }: Props) {
               className="alert alert-warning absolute top-5 w-[40%] "
             >
               <span className="loading loading-ring loading-lg"></span>
-              <span>Your Membership is getting ready!</span>
+              <span>Buying your subscription!</span>
             </div>
           </div>
         )}
@@ -128,7 +135,7 @@ function NFTBuyCard({ subscription }: Props) {
                   d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <span>Your Membership has been created</span>
+              <span>Your Subscription has been purchased</span>
             </div>
           </div>
         )}

@@ -107,7 +107,7 @@ function MyCreator() {
             Create Membership
           </button>
           <dialog id="my_modal_2" className="modal" ref={modalRef}>
-            <div className="modal-box">
+            <div className="modal-box mt-8">
               <p className="flex flex-row justify-center mb-5 text-lg font-bold">
                 Enter NFT membership details
               </p>
