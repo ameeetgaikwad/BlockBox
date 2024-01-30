@@ -22,7 +22,7 @@ function NFTBalanceCard({ subscription }: Props) {
             <img src={image} alt="nft" width={300} height={200} />
           ) : (
             <img
-              src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+              src="https://www.thestreet.com/.image/t_share/MTgyMDU5NDcwMTc4NzU1NzE1/boredape1.jpg"
               alt="nft"
               width={300}
               height={400}
@@ -31,7 +31,7 @@ function NFTBalanceCard({ subscription }: Props) {
         </figure>
         <div className="card-body">
           <div>
-            <h2 className="card-title">{title}</h2>
+            <h2 className="card-title text-gray-300 mb-1">{title}</h2>
             <div className="flex flex-row justify-between">
               <span className="badge badge-outline badge-accent">{symbol}</span>
               <span className="badge badge-neutral">{price}ether</span>
