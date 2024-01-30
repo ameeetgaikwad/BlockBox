@@ -64,6 +64,11 @@ function MyBuyer() {
                 })}
               </div>
             </div>
+            {subscriptions === undefined ? (
+              <span className="loading loading-ring loading-lg text-white flex flex-row justify-center mx-auto"></span>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       ) : (
