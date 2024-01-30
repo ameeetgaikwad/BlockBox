@@ -163,7 +163,7 @@ function MyCreator() {
                     <div className="flex flex-row justify-end mr-4 mt-2">
                       <button
                         onClick={handleBenifitChange}
-                        className="btn w-1/2"
+                        className="btn w-1/2 bg-gray-700"
                       >
                         Add
                       </button>
