@@ -49,13 +49,13 @@ function MyBuyer() {
           <Link
             className="btn btn-outline absolute right-6 mt-8"
             onClick={() => {}}
-            href={"/buyer/my-subscriptions"}
+            href={"/buyer/my-memberships"}
           >
             My Memberships
           </Link>
           <div className="mt-40 sm:mt-20">
             <div className="flex flex-row justify-center">
-              <p className="text-xl font-bold">Explore Subscriptions</p>
+              <p className="text-xl font-bold">Explore Memberships</p>
             </div>
             <div className="">
               <div className="my-24 flex flex-row gap-x-3 gap-y-3 flex-wrap justify-center pl-8">

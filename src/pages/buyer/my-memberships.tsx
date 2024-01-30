@@ -2,10 +2,11 @@ import Layout from "@/components/Layout/Layout";
 import BuyerNFTList from "@/views/Buyer/components/BuyerNFTList";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import axios from "axios";
+import Head from "next/head";
 import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 
-function MySubscription() {
+function MyMembership() {
   const { address: account, isConnected } = useAccount();
   const [display, setDisplay] = useState(false);
   const [subscriptions, setSubscriptions] = useState();
@@ -32,6 +33,9 @@ function MySubscription() {
   }, [isConnected, account]);
   return (
     <>
+      <Head>
+        <title>My Memberships</title>
+      </Head>
       <Layout>
         {display ? (
           <BuyerNFTList subscriptions={subscriptions} />
@@ -43,4 +47,4 @@ function MySubscription() {
   );
 }
 
-export default MySubscription;
+export default MyMembership;
