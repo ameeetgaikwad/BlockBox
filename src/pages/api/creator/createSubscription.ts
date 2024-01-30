@@ -21,7 +21,6 @@ export default async function handler(
       address,
       Number(indexOfLatestToken) - 1
     );
-    console.log(NFTAddress);
     const newSubscription = new Subscription({
       NFTAddress,
       title,

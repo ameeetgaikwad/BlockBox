@@ -7,18 +7,20 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === "POST") {
-    const { address, title, symbol, image, price, benifits } = req.body;
-    const newSubscription = new Subscription({
-      NFTAddress: address,
-      title,
-      symbol,
-      image,
-      price,
-      benifits,
-    });
-    await newSubscription.save();
-    const buyer = await Buyer.findOne({ buyerAddress: address });
-    buyer.purchasedSubscriptions.push(newSubscription._id);
+    const { address, id } = req.body;
+    console.log(address, id);
+    const buyer = await Buyer.findOne({ BuyerAddress: address });
+    if (!buyer) {
+      const newCreator = new Buyer({
+        BuyerAddress: address,
+        purchasedSubscriptions: [id],
+      });
+      await newCreator.save();
+    } else {
+      buyer.purchasedSubscriptions.push(id);
+      await buyer.save();
+    }
+
     res.status(200).json({ message: "Subscription bought successfully" });
   }
 }

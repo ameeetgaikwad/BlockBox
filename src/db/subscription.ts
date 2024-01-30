@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 mongoose.connect(
-  `mongodb+srv://ameeetgaikwad:${process.env.NEXT_PUBLIC_MONGODB_PASSWORD}@cryptopayindia.wsredxt.mongodb.net/BlockBox`
+  `mongodb+srv://ameeetgaikwad:rRqiBCBHlqI1LAde@cryptopayindia.wsredxt.mongodb.net/BlockBox`
 );
 
 const subscriptionSchema = new mongoose.Schema({

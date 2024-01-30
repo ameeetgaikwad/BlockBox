@@ -5,13 +5,8 @@ import { useAccount } from "wagmi";
 
 import CreatorNFTList from "./components/CreatorNFTList";
 import axios from "axios";
-import {
-  useFactoryContractWrite,
-  useNFTAddress,
-  useNumberOfTokens,
-} from "@/hooks/useFactory";
+import { useFactoryContractWrite } from "@/hooks/useFactory";
 import { ethers } from "ethers";
-import { set } from "mongoose";
 
 function MyCreator() {
   const { address: account, isConnected } = useAccount();
@@ -28,12 +23,31 @@ function MyCreator() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
+  const [subscriptions, setSubscriptions] = useState();
   useEffect(() => {
     if (isConnected) {
       setDisplay(true);
+    } else {
+      setDisplay(false);
     }
-  }, [isConnected]);
+  }, [isConnected, account]);
+
+  async function fetchCreatorSubscription() {
+    try {
+      const res = await axios.get("/api/creator/subscription", {
+        params: {
+          address: account,
+        },
+      });
+      console.log("in fetchCreatorSubscription", res);
+      setSubscriptions(res.data.subscriptions);
+    } catch (e) {
+      console.log("Error at MyCreator.tsx", e);
+    }
+  }
+
   useEffect(() => {
+    fetchCreatorSubscription();
     if (success) {
       setTimeout(() => {
         setSuccess(false);
@@ -44,7 +58,8 @@ function MyCreator() {
         setError(false);
       }, 5000);
     }
-  }, [success, error]);
+  }, [success, error, account]);
+
   function handleBenifitChange() {
     setBenifits([...benifits, currentBenifit]);
     setCurrentBenifit("");
@@ -52,6 +67,8 @@ function MyCreator() {
 
   async function handleSubmit() {
     setLoading(true);
+    // @ts-ignore
+    modalRef?.current?.close();
     try {
       const res = await deployContract({
         args: [account, title, symbol, ethers.parseEther(price)],
@@ -68,22 +85,20 @@ function MyCreator() {
         });
         setLoading(false);
         setSuccess(true);
-      }, 30000);
+      }, 35000);
     } catch (e) {
       console.log("error at mycreator.tsx", e);
       setLoading(false);
       setError(true);
     }
-    // @ts-ignore
-    modalRef?.current?.close();
   }
 
   return (
     <Layout>
       {display ? (
-        <div>
+        <div className="">
           <button
-            className="btn btn-outline absolute right-6"
+            className="btn btn-outline absolute right-6 mt-8"
             onClick={() => {
               // @ts-ignore
               modalRef?.current?.showModal();
@@ -225,10 +240,12 @@ function MyCreator() {
               </div>
             </div>
           )}
-          <CreatorNFTList />
+          <CreatorNFTList subscriptions={subscriptions} />
         </div>
       ) : (
-        <ConnectButton />
+        <div className="flex flex-row justify-center items-center pt-8">
+          <ConnectButton />
+        </div>
       )}
     </Layout>
   );
