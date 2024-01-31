@@ -2,13 +2,13 @@
 
 This is an NFT memberships marketplace, facilitating creators in minting and listing NFT memberships that unlock various benefits for buyers.
 
-## Technologies Used
-
-- NextJs, TailwindCSS, DaisyUI, Solidity, Typescript, MongoDB, Mongoose.
-
 ## Working explained.
 
 - When you create a membership, you call call `Factory.sol`, which deploys a `Membership.sol` which is a NFT contract. Now you have created your Membership and user will be able to buy it.
+
+## Technologies Used
+
+- NextJs, TailwindCSS, DaisyUI, Solidity, Typescript, MongoDB, Mongoose.
 
 ## Why the certain technologies?
 
