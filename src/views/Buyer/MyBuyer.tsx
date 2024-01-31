@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout/Layout";
 import NFTBalanceCard from "@/components/NFTBalance/NFTBalanceCard";
 import NFTBuyCard from "@/components/NFTBuy/NFTBuyCard";
+import Search from "@/components/Search/Search";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import axios from "axios";
 import Link from "next/link";
@@ -23,11 +24,7 @@ function MyBuyer() {
   const [subscriptions, setSubscriptions] = useState<subscriptionType[]>();
   async function fetchAllSubscriptions() {
     try {
-      const res = await axios.get("/api/subscription/subscription", {
-        params: {
-          address: account,
-        },
-      });
+      const res = await axios.get("/api/subscription/subscription");
       setSubscriptions(res.data.subscriptions);
     } catch (e) {
       console.log(e);
@@ -56,6 +53,9 @@ function MyBuyer() {
           <div className="mt-40 sm:mt-20">
             <div className="flex flex-row justify-center">
               <p className="text-xl font-bold">Explore Memberships</p>
+            </div>
+            <div className="mt-8 flex flex-row justify-center">
+              <Search setSubscriptions={setSubscriptions} />
             </div>
             <div className="">
               <div className="my-24 flex flex-row gap-x-3 gap-y-3 flex-wrap justify-center pl-8">
