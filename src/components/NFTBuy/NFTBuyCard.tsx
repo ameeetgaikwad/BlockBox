@@ -18,6 +18,16 @@ type Props = {
 };
 
 function NFTBuyCard({ subscription }: Props) {
+  const [priceInUSD, setPriceInUSD] = useState<Number>();
+  async function getUSDConversion() {
+    const res = await axios.get("https://api.coinbase.com/v2/exchange-rates");
+    const price = 1 / res.data.data.rates.MATIC.slice(0, 3);
+
+    setPriceInUSD(price);
+  }
+  useEffect(() => {
+    getUSDConversion();
+  }, []);
   const { address: account } = useAccount();
   const { title, symbol, image, price, benifits, NFTAddress } = subscription;
   const { writeAsync: mintNFT } = useSubscriptionContractWrite({
@@ -91,7 +101,12 @@ function NFTBuyCard({ subscription }: Props) {
                 <span className="badge badge-outline badge-accent">
                   {symbol}
                 </span>
-                <span className="badge badge-neutral">{price}ether</span>
+                <div className="flex flex-col gap-y-1">
+                  <div className="badge badge-neutral">{price}matic</div>
+                  <div className="badge badge-neutral">
+                    ${((priceInUSD as number) * Number(price))?.toFixed(5)}
+                  </div>
+                </div>
               </div>
             </div>
 
