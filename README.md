@@ -17,7 +17,7 @@ This is an NFT memberships marketplace, facilitating creators in minting and lis
 ## Tradeoffs / What would I do differently if I have more time
 
 - I would have a middleware contract `Controller.sol`. Rather than users directly interacting with the main NFT contract when they want to buy an membership, they will interact with this `Controller.sol` contract and this contract will buy the NFT for them.
-- All the data you see on the UI regarding the NFT it is redering offchain. I've stored the data in a database (mongoDB). I can render all the data from onchain as well, but as the assignment mentioned to showcase Database skills as well so I did this way. And will use multicall to get all the NFTs.
+- All the data you see on the UI regarding the NFT it is redering offchain. I've stored the data in a database (mongoDB). I can render all the data from onchain as well, but was trying things out differently so did it this way. And will use multicall to get all the NFTs.
 - I would also add debounce to the search feature. When I render data from on chain.
 
 ## Contract addresses
