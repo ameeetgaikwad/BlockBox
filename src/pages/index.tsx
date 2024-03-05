@@ -4,7 +4,7 @@ import Head from "next/head";
 import Layout from "@/components/Layout/Layout";
 import Home from "@/components/Home/Home";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export default function Landing() {
   return (
